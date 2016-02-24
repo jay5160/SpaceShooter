@@ -56,11 +56,11 @@ public class Player {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP){
 		//Where you'd put the logic for key inputs
-                    speed = -1;
+                    speed = -5;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_DOWN){
 		//Where you'd put the logic for key inputs
-                    speed = +1;
+                    speed = +5;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_B){
                     if (myColor == Color.red){

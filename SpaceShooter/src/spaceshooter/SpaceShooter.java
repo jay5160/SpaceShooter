@@ -76,7 +76,7 @@ public class SpaceShooter extends javax.swing.JPanel{
 		game.move();
 		game.repaint();
                 try {
-                    Thread.sleep(2);                 //1000 milliseconds is one second.
+                    Thread.sleep(20);                 //1000 milliseconds is one second.
                 } catch(InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }

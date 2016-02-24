@@ -6,6 +6,7 @@
 
 package spaceshooter;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
@@ -15,6 +16,9 @@ import java.awt.Graphics2D;
 public class Enemy {
   
     //where the enemy attributes would go
+    private int x;
+    private int y;
+    private Color color;
     
     private SpaceShooter spaceShooter;
     
@@ -29,7 +33,7 @@ public class Enemy {
     public void paint(Graphics2D g) {
                 this.move();
                 //g.setColor(Color.red);
-		//g.fillOval(x, y, 30, 30);
+		//g.fillOval(40, 40, 30, 30);
                 //Where you put the paint objects like these ^
 	}
 }
