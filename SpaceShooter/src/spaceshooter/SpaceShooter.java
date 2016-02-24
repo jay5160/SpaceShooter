@@ -25,7 +25,7 @@ public class SpaceShooter extends javax.swing.JPanel{
      * @param args the command line arguments
      */
     
-    Player player = new Player(this);
+    Player player = new Player(this, 50, 50, 0);
     Enemy enemy = new Enemy(this);
     
     @SuppressWarnings("serial")

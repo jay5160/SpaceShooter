@@ -17,30 +17,48 @@ import java.awt.event.KeyEvent;
 public class Player {
     
     //Where the player attributes would go
+    private int x;
+    private int y;
+    private int speed;
     
     private SpaceShooter spaceShooter;
     
-    public Player(SpaceShooter spaceShooter){
+    public Player(SpaceShooter spaceShooter, int x, int y, int speed){
         this.spaceShooter = spaceShooter;
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
     }
     
     void move(){
         //where the game logic goes
+        y += speed;
     }
     
     public void paint(Graphics2D g) {
                 this.move();
-                //g.setColor(Color.red);
-		//g.fillOval(x, y, 30, 30);
+                g.setColor(Color.red);
+		g.fillOval(x, y, 30, 30);
                 //Where you put the paint objects like these ^
     }
     
     public void keyReleased(KeyEvent e) {
-	}
+        if (e.getKeyCode() == KeyEvent.VK_UP){
+            speed = 0;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN){
+            speed = 0;
+        }
+    }
 
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_SPACE){
-			//Where you'd put the logic for key inputs
+		if (e.getKeyCode() == KeyEvent.VK_UP){
+		//Where you'd put the logic for key inputs
+                    speed = -1;
+                }
+                if (e.getKeyCode() == KeyEvent.VK_DOWN){
+		//Where you'd put the logic for key inputs
+                    speed = +1;
                 }
 	}
         
