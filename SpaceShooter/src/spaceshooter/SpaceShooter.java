@@ -6,9 +6,11 @@
 
 package spaceshooter;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
@@ -61,18 +63,24 @@ public class SpaceShooter extends javax.swing.JPanel{
 	}
     
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Pong Shooter");
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        JFrame frame = new JFrame("Space Shooter");
 	SpaceShooter game = new SpaceShooter();
 	frame.add(game);
-	frame.setSize(300, 400);
+	frame.setSize((int)screenSize.getWidth(), (int)screenSize.getHeight());
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	while (true) {
 		game.move();
 		game.repaint();
-                //Thread.sleep(8);
+                try {
+                    Thread.sleep(2);                 //1000 milliseconds is one second.
+                } catch(InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
             }
         }
     
-        }
+}
