@@ -23,6 +23,9 @@ public class SpaceShooter extends javax.swing.JPanel{
      * @param args the command line arguments
      */
     
+    Player player = new Player(this);
+    Enemy enemy = new Enemy(this);
+    
     @SuppressWarnings("serial")
     public SpaceShooter() {
 		addKeyListener(new KeyListener() {
@@ -32,23 +35,20 @@ public class SpaceShooter extends javax.swing.JPanel{
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				racquet.keyReleased(e);
-                                shot.keyReleased(e);
+				player.keyReleased(e);
 			}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				racquet.keyPressed(e);
-                                shot.keyPressed(e);
+				player.keyPressed(e);
 			}
 		});
 		setFocusable(true);
 	}
     
     private void move() {
-		ball.move();
-		racquet.move();
-                shot.move();
+		player.move();
+		enemy.move();
 	}
     
     public void paint(Graphics g) {
@@ -56,24 +56,23 @@ public class SpaceShooter extends javax.swing.JPanel{
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		ball.paint(g2d);
-		racquet.paint(g2d);
-                shot.paint(g2d);
+		player.paint(g2d);
+		enemy.paint(g2d);
 	}
     
     public static void main(String[] args) {
         JFrame frame = new JFrame("Pong Shooter");
-		SpaceShooter game = new SpaceShooter();
-		frame.add(game);
-		frame.setSize(300, 400);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	SpaceShooter game = new SpaceShooter();
+	frame.add(game);
+	frame.setSize(300, 400);
+	frame.setVisible(true);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		while (true) {
-			game.move();
-			game.repaint();
-                        Thread.sleep(8);
-		}
+	while (true) {
+		game.move();
+		game.repaint();
+                //Thread.sleep(8);
             }
+        }
     
         }
