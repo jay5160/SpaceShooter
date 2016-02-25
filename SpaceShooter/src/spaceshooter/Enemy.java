@@ -27,7 +27,9 @@ public class Enemy {
     }
     
     void move(){
-        //where the game logic goes
+        for(int i = 0; i < 10; i++){
+            
+        }
     }
     
     public void paint(Graphics2D g) {
