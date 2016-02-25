@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+//please work
+
 package spaceshooter;
 
 import java.awt.Color;
@@ -26,7 +28,7 @@ public class SpaceShooter extends javax.swing.JPanel{
      * @param args the command line arguments
      */
     
-    //Player player = new Player(this, 50, 50, 0);
+    Player player = new Player(this, 50, 50, 0);
     Enemy enemy = new Enemy(this);
     
     @SuppressWarnings("serial")
@@ -38,19 +40,19 @@ public class SpaceShooter extends javax.swing.JPanel{
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				//player.keyReleased(e);
+				player.keyReleased(e);
 			}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				//player.keyPressed(e);
+				player.keyPressed(e);
 			}
 		});
 		setFocusable(true);
 	}
     
     private void move() {
-		//player.move();
+		player.move();
 		enemy.move();
 	}
     
@@ -60,7 +62,7 @@ public class SpaceShooter extends javax.swing.JPanel{
                 g2d.setBackground(Color.BLACK);
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		//player.paint(g2d);
+		player.paint(g2d);
 		enemy.paint(g2d);
 	}
     
