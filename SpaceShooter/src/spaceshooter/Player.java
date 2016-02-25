@@ -20,7 +20,7 @@ public class Player {
     private int x;
     private int y;
     private int speed;
-    private Color myColor;
+    private Color playerColor;
     
     private SpaceShooter spaceShooter;
     
@@ -29,7 +29,7 @@ public class Player {
         this.x = x;
         this.y = y;
         this.speed = speed;
-        this.myColor = Color.red;
+        this.playerColor = Color.red;
     }
     
     void move(){
@@ -39,7 +39,7 @@ public class Player {
     
     public void paint(Graphics2D g) {
                 this.move();
-                g.setColor(myColor);
+                g.setColor(playerColor);
 		g.fillOval(x, y, 30, 30);
                 //Where you put the paint objects like these ^
     }
@@ -63,14 +63,14 @@ public class Player {
                     speed = +5;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_B){
-                    if (myColor == Color.red){
-                        myColor = Color.blue;
+                    if (playerColor == Color.red){
+                        playerColor = Color.blue;
                     }
-                    else if (myColor == Color.blue){
-                        myColor = Color.green;
+                    else if (playerColor == Color.blue){
+                        playerColor = Color.green;
                     }
-                    else if (myColor == Color.green){
-                        myColor = Color.red;
+                    else if (playerColor == Color.green){
+                        playerColor = Color.red;
                     }
                 }
 	}
