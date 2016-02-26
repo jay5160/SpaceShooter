@@ -19,11 +19,12 @@ public class myJPanel extends JPanel implements ActionListener {
         this.setLayout(new BorderLayout());
         start = new JButton("Go!");
         this.add(start, BorderLayout.SOUTH);
+        this.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
