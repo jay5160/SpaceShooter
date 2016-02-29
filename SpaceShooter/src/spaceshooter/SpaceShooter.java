@@ -6,6 +6,7 @@
 
 package spaceshooter;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,7 +27,7 @@ public class SpaceShooter extends javax.swing.JPanel{
      */
     
     Player player = new Player(this, 50, 50, 0);
-    Enemy enemy = new Enemy(this, 10);
+    Enemy enemy = new Enemy(this);
     
     @SuppressWarnings("serial")
     public SpaceShooter() {
@@ -56,6 +57,7 @@ public class SpaceShooter extends javax.swing.JPanel{
     public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
+                g2d.setBackground(Color.BLACK);
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		player.paint(g2d);
@@ -68,7 +70,7 @@ public class SpaceShooter extends javax.swing.JPanel{
         JFrame frame = new JFrame("Space Shooter");
 	SpaceShooter game = new SpaceShooter();
 	frame.add(game);
-	frame.setSize((int)screenSize.getWidth(), (int)screenSize.getHeight());
+	frame.setSize((int)screenSize.getWidth(), (int)screenSize.getHeight()/2);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
