@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+//this is a test
+
 package spaceshooter;
 
 import java.awt.Color;
