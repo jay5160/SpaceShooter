@@ -26,7 +26,7 @@ public class SpaceShooter extends javax.swing.JPanel{
      */
     
     Player player = new Player(this, 50, 50, 0);
-    Enemy enemy = new Enemy(this);
+    Enemy enemy = new Enemy(this, 10);
     
     @SuppressWarnings("serial")
     public SpaceShooter() {
