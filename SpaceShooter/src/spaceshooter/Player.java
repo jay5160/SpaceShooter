@@ -66,7 +66,7 @@ public class Player {
                     g.drawOval((int)c.getCenterX(), (int)c.getCenterY(), (int)c.getRadius(), (int)c.getRadius());
                 }
                 
-                g.setColor(Color.BLACK);
+                g.setColor(Color.WHITE);
                 g.drawString("Player Shots: " + playerShots.size(), 100, 60);
                 //g.drawLine(x, y+playerRadius/2, x+(int)screenSize.getWidth(), y+playerRadius/2);
                 
