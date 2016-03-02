@@ -17,6 +17,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -27,7 +28,6 @@ public class SpaceShooter extends javax.swing.JPanel{
     /**
      * @param args the command line arguments
      */
-    
     Enemy enemy = new Enemy(this);
     Player player = new Player(this, enemy, 50, 50, 0);
     
@@ -70,7 +70,8 @@ public class SpaceShooter extends javax.swing.JPanel{
         
         JFrame frame = new JFrame("Space Shooter");
 	SpaceShooter game = new SpaceShooter();
-	frame.add(game);
+        game.setBackground(Color.black);
+        frame.add(game);
 	frame.setSize((int)screenSize.getWidth()/2, (int)screenSize.getHeight()/2);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
