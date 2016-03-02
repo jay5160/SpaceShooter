@@ -26,6 +26,7 @@ public class Enemy{
     private int delay = 50;
     private int speed = 3;
     private int colorCounter = 0;
+    private int score = 0;
     
     private ArrayList<Circle> balls;
     private ArrayList<Color> color;
@@ -59,7 +60,7 @@ public class Enemy{
             if(c.getCenterX() < -c.getRadius()){
 		balls.remove(i);
                 color.remove(i);
-		//where you can increase score
+		score++;
             }
         }  
     }
@@ -88,6 +89,7 @@ public class Enemy{
         }
         g.setColor(Color.BLACK);
         g.drawString("Balls on Screen: " + balls.size(), 100, 20);
-        colorCounter = 0;      
+        g.drawString("Score: " + score, 100, 40);
+        colorCounter = 0;
     }
 }
