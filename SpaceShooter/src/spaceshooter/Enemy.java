@@ -34,10 +34,8 @@ public class Enemy{
     private Random randomGenerator = new Random();
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     
-    private SpaceShooter spaceShooter;
     
-    public Enemy(SpaceShooter spaceShooter){
-        this.spaceShooter = spaceShooter;
+    public Enemy(){
         balls = new ArrayList<Circle>();
         color = new ArrayList<Color>();
         //balls.add(new Circle(10, 10, 10));

@@ -32,11 +32,11 @@ public class Player {
     private ArrayList<Circle> playerShots;
     private int shotDelay = 0;
     
-    private SpaceShooter spaceShooter;
+    //private SpaceShooter spaceShooter;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     
-    public Player(SpaceShooter spaceShooter, Enemy enemy, int x, int y, int speed){
-        this.spaceShooter = spaceShooter;
+    public Player(Enemy enemy, int x, int y, int speed){
+        //this.spaceShooter = spaceShooter;
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -114,5 +114,9 @@ public class Player {
                     }
                 }
 	}
+        
+        public int getSpeed(){
+            return speed;
+        }
         
 }

@@ -6,8 +6,12 @@
 
 package spaceshooter;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import javax.swing.JFrame;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -46,10 +50,10 @@ public class PlayerTest {
     @Test
     public void testMove() {
         System.out.println("move");
-        //Player instance = null;
+        Player instance = null;
         //instance.move();
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals(1, 1);
+        assertEquals(instance.getSpeed(), 5);
         //fail("The test case is a prototype.");
     }
 
