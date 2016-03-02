@@ -7,7 +7,9 @@
 package spaceshooter;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 /**
@@ -21,8 +23,11 @@ public class Player {
     private int y;
     private int speed;
     private Color playerColor;
+    private int playerRadius = 30;
+    private boolean isShooting = false;
     
     private SpaceShooter spaceShooter;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     
     public Player(SpaceShooter spaceShooter, int x, int y, int speed){
         this.spaceShooter = spaceShooter;
@@ -40,7 +45,10 @@ public class Player {
     public void paint(Graphics2D g) {
                 this.move();
                 g.setColor(playerColor);
-		g.fillOval(x, y, 30, 30);
+		g.fillOval(x, y, playerRadius, playerRadius);
+                if(isShooting == true){
+                    g.drawLine(x, y+playerRadius/2, x+(int)screenSize.getWidth(), y+playerRadius/2);
+                }
                 //Where you put the paint objects like these ^
     }
     
@@ -51,6 +59,9 @@ public class Player {
         if (e.getKeyCode() == KeyEvent.VK_DOWN){
             speed = 0;
         }
+        if (e.getKeyCode() == KeyEvent.VK_W){
+                    isShooting = false;
+                }
     }
 
 	public void keyPressed(KeyEvent e) {
@@ -62,7 +73,7 @@ public class Player {
 		//Where you'd put the logic for key inputs
                     speed = +5;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_B){
+                if (e.getKeyCode() == KeyEvent.VK_Q){
                     if (playerColor == Color.red){
                         playerColor = Color.blue;
                     }
@@ -72,6 +83,9 @@ public class Player {
                     else if (playerColor == Color.green){
                         playerColor = Color.red;
                     }
+                }
+                if (e.getKeyCode() == KeyEvent.VK_W){
+                    isShooting = true;
                 }
 	}
         
