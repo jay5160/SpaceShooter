@@ -23,7 +23,7 @@ public class Player {
     //Where the player attributes would go
     private int x;
     private int y;
-    private int speed;
+    private int speed = 5;
     private Color playerColor;
     private int playerRadius = 30;
     private boolean isShooting = false;
