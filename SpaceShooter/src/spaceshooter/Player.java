@@ -124,4 +124,8 @@ public class Player {
             this.playerColor = playerColor;
         }
         
+        public Color getPlayerColor(){
+            return playerColor;
+        }
+        
 }

@@ -52,49 +52,37 @@ public class PlayerTest {
      */
     @Test
     public void testDefaultSpeed() {
-        System.out.println("move");
+        System.out.println("testDefaultSpeed");
         Enemy enemy = new Enemy();
         Player player = new Player(enemy, 50, 50, 5);
         assertEquals(player.getSpeed(), 5);
     }
-
-    /**
-     * Test of paint method, of class Player.
-     */
+    
     @Test
-    public void testPaint() {
-        System.out.println("paint");
-        Graphics2D g = null;
-        Player instance = null;
-        instance.paint(g);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void playerFromRedToCyan() {
+        System.out.println("playerFromRedToCyan");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        player.changePlayerColor(Color.red);
+        assertEquals(player.getPlayerColor(), Color.cyan);
     }
-
-    /**
-     * Test of keyReleased method, of class Player.
-     */
+    
     @Test
-    public void testKeyReleased() {
-        System.out.println("keyReleased");
-        KeyEvent e = null;
-        Player instance = null;
-        instance.keyReleased(e);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void playerFromCyanToGreen() {
+        System.out.println("playerFromCyanToGreen");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        player.changePlayerColor(Color.cyan);
+        assertEquals(player.getPlayerColor(), Color.green);
     }
-
-    /**
-     * Test of keyPressed method, of class Player.
-     */
+    
     @Test
-    public void testKeyPressed() {
-        System.out.println("keyPressed");
-        KeyEvent e = null;
-        Player instance = null;
-        instance.keyPressed(e);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void playerFromGreenToRed() {
+        System.out.println("playerFromGreenToRed");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        player.changePlayerColor(Color.green);
+        assertEquals(player.getPlayerColor(), Color.red);
     }
     
 }
