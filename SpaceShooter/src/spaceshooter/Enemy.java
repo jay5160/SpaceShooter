@@ -23,7 +23,7 @@ public class Enemy{
     //where the enemy attributes would go
     private int x;
     private int y;
-    private int delay = 30;
+    private int delay = 50;
     private int speed = 3;
     private int colorCounter = 0;
     
@@ -54,6 +54,14 @@ public class Enemy{
             c.setCenterX(c.getCenterX()-speed);
 	}
         
+        for(int i = balls.size()-1; i >= 0; i--){
+            Circle c = balls.get(i);
+            if(c.getCenterX() < -c.getRadius()){
+		balls.remove(i);
+                color.remove(i);
+		//where you can increase score
+            }
+        }  
     }
     
     private Color getRandomColor(){
@@ -78,6 +86,8 @@ public class Enemy{
             colorCounter++;
             g.fillOval((int)c.getCenterX(), (int)c.getCenterY(), 50, 50);
         }
+        g.setColor(Color.BLACK);
+        g.drawString("Balls on Screen: " + balls.size(), 100, 20);
         colorCounter = 0;      
     }
 }
