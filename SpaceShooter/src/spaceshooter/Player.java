@@ -95,15 +95,7 @@ public class Player {
                     speed = +5;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_Q){
-                    if (playerColor == Color.red){
-                        playerColor = Color.cyan;
-                    }
-                    else if (playerColor == Color.cyan){
-                        playerColor = Color.green;
-                    }
-                    else if (playerColor == Color.green){
-                        playerColor = Color.red;
-                    }
+                    changePlayerColor(playerColor);
                 }
                 if (e.getKeyCode() == KeyEvent.VK_W){
                     isShooting = true;
@@ -117,6 +109,19 @@ public class Player {
         
         public int getSpeed(){
             return speed;
+        }
+        
+        public void changePlayerColor(Color playerColor){
+            if (playerColor == Color.red){
+                playerColor = Color.cyan;
+            }
+            else if (playerColor == Color.cyan){
+                playerColor = Color.green;
+            }
+            else if (playerColor == Color.green){
+                playerColor = Color.red;
+            }
+            this.playerColor = playerColor;
         }
         
 }

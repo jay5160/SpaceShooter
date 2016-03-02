@@ -25,6 +25,9 @@ import static org.junit.Assert.*;
  */
 public class PlayerTest {
     
+    Enemy enemy = new Enemy();
+    Player player = new Player(enemy, 50, 50, 0);
+    
     public PlayerTest() {
     }
     
@@ -48,13 +51,11 @@ public class PlayerTest {
      * Test of move method, of class Player.
      */
     @Test
-    public void testMove() {
+    public void testDefaultSpeed() {
         System.out.println("move");
-        Player instance = null;
-        //instance.move();
-        // TODO review the generated test code and remove the default call to fail.
-        assertEquals(instance.getSpeed(), 5);
-        //fail("The test case is a prototype.");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        assertEquals(player.getSpeed(), 5);
     }
 
     /**
