@@ -72,7 +72,7 @@ public class Enemy{
         if(colorId == 0){
             color = Color.RED;
         }else if(colorId == 1){
-            color = Color.BLUE;
+            color = Color.cyan;
         }else if(colorId == 2){
             color = Color.GREEN;
         }

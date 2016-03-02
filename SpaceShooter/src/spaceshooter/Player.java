@@ -96,9 +96,9 @@ public class Player {
                 }
                 if (e.getKeyCode() == KeyEvent.VK_Q){
                     if (playerColor == Color.red){
-                        playerColor = Color.blue;
+                        playerColor = Color.cyan;
                     }
-                    else if (playerColor == Color.blue){
+                    else if (playerColor == Color.cyan){
                         playerColor = Color.green;
                     }
                     else if (playerColor == Color.green){
