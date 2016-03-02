@@ -11,6 +11,8 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import javafx.scene.shape.Circle;
 
 /**
  *
@@ -25,30 +27,49 @@ public class Player {
     private Color playerColor;
     private int playerRadius = 30;
     private boolean isShooting = false;
+    private Enemy enemy;
+    private ArrayList<Circle> balls;
+    private ArrayList<Circle> playerShots;
+    private int shotDelay = 0;
     
     private SpaceShooter spaceShooter;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     
-    public Player(SpaceShooter spaceShooter, int x, int y, int speed){
+    public Player(SpaceShooter spaceShooter, Enemy enemy, int x, int y, int speed){
         this.spaceShooter = spaceShooter;
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.playerColor = Color.red;
+        this.enemy = enemy;
+        balls = enemy.getBalls();
+        playerShots = new ArrayList<Circle>();
     }
     
     void move(){
         //where the game logic goes
         y += speed;
+        shotDelay--;
+        
+        for(Circle c: playerShots){
+            c.setCenterX(c.getCenterX()+5);
+        }
+        
     }
     
     public void paint(Graphics2D g) {
                 this.move();
                 g.setColor(playerColor);
 		g.fillOval(x, y, playerRadius, playerRadius);
-                if(isShooting == true){
-                    g.drawLine(x, y+playerRadius/2, x+(int)screenSize.getWidth(), y+playerRadius/2);
+                
+                for(Circle c: playerShots){
+                    g.drawOval((int)c.getCenterX(), (int)c.getCenterY(), (int)c.getRadius(), (int)c.getRadius());
                 }
+                
+                g.setColor(Color.BLACK);
+                g.drawString("Player Shots: " + playerShots.size(), 100, 60);
+                //g.drawLine(x, y+playerRadius/2, x+(int)screenSize.getWidth(), y+playerRadius/2);
+                
                 //Where you put the paint objects like these ^
     }
     
@@ -60,8 +81,8 @@ public class Player {
             speed = 0;
         }
         if (e.getKeyCode() == KeyEvent.VK_W){
-                    isShooting = false;
-                }
+            isShooting = false;
+        }
     }
 
 	public void keyPressed(KeyEvent e) {
@@ -86,6 +107,11 @@ public class Player {
                 }
                 if (e.getKeyCode() == KeyEvent.VK_W){
                     isShooting = true;
+                    if(shotDelay < 0){
+                        shotDelay = 5;
+                        //color.add(getRandomColor());
+                        playerShots.add(new Circle(x, y+playerRadius/4, playerRadius/2));
+                    }
                 }
 	}
         

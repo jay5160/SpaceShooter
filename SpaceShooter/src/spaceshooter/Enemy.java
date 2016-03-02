@@ -80,6 +80,18 @@ public class Enemy{
         return color;
     }
     
+    public ArrayList<Circle> getBalls(){
+        return balls;
+    }
+    
+    public ArrayList<Color> getBallColor(){
+        return color;
+    }
+    
+    public void shotBallCollision(){
+        
+    }
+    
     public void paint(Graphics2D g) {
         this.move();
         for(Circle c : balls){
