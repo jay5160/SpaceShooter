@@ -97,7 +97,7 @@ public class Enemy{
             colorCounter++;
             g.fillOval((int)c.getCenterX(), (int)c.getCenterY(), 50, 50);
         }
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawString("Balls on Screen: " + balls.size(), 100, 20);
         g.drawString("Score: " + score, 100, 40);
         colorCounter = 0;
