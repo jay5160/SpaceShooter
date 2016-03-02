@@ -72,7 +72,7 @@ public class SpaceShooter extends javax.swing.JPanel{
         JFrame frame = new JFrame("Space Shooter");
 	SpaceShooter game = new SpaceShooter();
 	frame.add(game);
-	frame.setSize((int)screenSize.getWidth(), (int)screenSize.getHeight()/2);
+	frame.setSize((int)screenSize.getWidth()/2, (int)screenSize.getHeight()/2);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

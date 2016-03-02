@@ -24,7 +24,7 @@ public class Enemy{
     private int x;
     private int y;
     private int delay = 30;
-    private int speed = 7;
+    private int speed = 3;
     private int colorCounter = 0;
     
     private ArrayList<Circle> balls;
@@ -45,9 +45,9 @@ public class Enemy{
     void move(){
         delay--;
         if(delay < 0){
-            delay = 90;
+            delay = 30;
             color.add(getRandomColor());
-            balls.add(new Circle(screenSize.getWidth(), randomGenerator.nextInt((int)screenSize.getHeight()/2-150)-50, 200)); 
+            balls.add(new Circle(screenSize.getWidth()/2 + 100, randomGenerator.nextInt((int)screenSize.getHeight()/2), 50)); 
         }
         
         for(Circle c : balls){
@@ -76,7 +76,7 @@ public class Enemy{
         for(Circle c : balls){
             g.setColor(color.get(colorCounter));
             colorCounter++;
-            g.fillOval((int)c.getCenterX(), (int)c.getCenterY(), 200, 200);
+            g.fillOval((int)c.getCenterX(), (int)c.getCenterY(), 50, 50);
         }
         colorCounter = 0;      
     }
