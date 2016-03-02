@@ -16,9 +16,9 @@ public class myJPanel extends JPanel implements ActionListener {
 
     myJPanel() {
         
-        this.setLayout(new BorderLayout());
+        //this.setLayout(new BorderLayout());
         start = new JButton("Go!");
-        this.add(start, BorderLayout.SOUTH);
+        //this.add(start, BorderLayout.SOUTH);
     }
 
     @Override
