@@ -36,6 +36,7 @@ public class Player {
     private ArrayList<Circle> balls;
     private ArrayList<Circle> playerShots;
     private ArrayList<Color> color;
+    private int shotSpeed = 5;
     private int shotDelay = 0;
     private int colorCounter = 0;
     
@@ -67,7 +68,7 @@ public class Player {
         shotDelay--;
         
         for(Circle c: playerShots){
-            c.setCenterX(c.getCenterX()+5);
+            c.setCenterX(c.getCenterX()+shotSpeed);
         }
         
         for(int i = playerShots.size()-1; i >= 0; i--){
@@ -168,6 +169,10 @@ public class Player {
         
         public int getShotRadius(){
             return shotRadius;
+        }
+        
+        public int getShotSpeed(){
+            return shotSpeed;
         }
         
 }

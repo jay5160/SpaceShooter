@@ -64,7 +64,7 @@ public class Enemy{
         }  
     }
     
-    private Color getRandomColor(){
+    public Color getRandomColor(){
         int colorId = randomGenerator.nextInt(3);
         Color color = Color.RED;
         
@@ -106,6 +106,10 @@ public class Enemy{
     
     public int getEnemyRadius(){
         return enemyRadius;
+    }
+    
+    public int getSpeed(){
+        return speed;
     }
     
 }

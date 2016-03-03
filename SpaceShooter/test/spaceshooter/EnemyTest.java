@@ -46,79 +46,36 @@ public class EnemyTest {
      * Test of move method, of class Enemy.
      */
     @Test
-    public void testMove() {
-        System.out.println("move");
-        Enemy instance = new Enemy();
-        instance.move();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void BallListSizeAndColorListSize() {
+        System.out.println("BallListSizeAndColorListSize");
+        Enemy enemy = new Enemy();
+        int colorSize = enemy.getBallColor().size();
+        int ballsSize = enemy.getBalls().size();
+        assertEquals(colorSize, ballsSize);
     }
-
-    /**
-     * Test of getBalls method, of class Enemy.
-     */
+    
     @Test
-    public void testGetBalls() {
-        System.out.println("getBalls");
-        Enemy instance = new Enemy();
-        ArrayList<Circle> expResult = null;
-        ArrayList<Circle> result = instance.getBalls();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void getRandomColorTest() {
+        System.out.println("getRandomColorTest");
+        Enemy enemy = new Enemy();
+        Color color = enemy.getRandomColor();
+        boolean validColor = false;
+        if(color == Color.CYAN || color == Color.RED || color == Color.GREEN){
+            validColor = true;
+        }
+        assertEquals(validColor, true);
     }
-
-    /**
-     * Test of getBallColor method, of class Enemy.
-     */
+    
     @Test
-    public void testGetBallColor() {
-        System.out.println("getBallColor");
-        Enemy instance = new Enemy();
-        ArrayList<Color> expResult = null;
-        ArrayList<Color> result = instance.getBallColor();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of shotBallCollision method, of class Enemy.
-     */
-    @Test
-    public void testShotBallCollision() {
-        System.out.println("shotBallCollision");
-        Enemy instance = new Enemy();
-        instance.shotBallCollision();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of paint method, of class Enemy.
-     */
-    @Test
-    public void testPaint() {
-        System.out.println("paint");
-        Graphics2D g = null;
-        Enemy instance = new Enemy();
-        instance.paint(g);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getEnemyRadius method, of class Enemy.
-     */
-    @Test
-    public void testGetEnemyRadius() {
-        System.out.println("getEnemyRadius");
-        Enemy instance = new Enemy();
-        int expResult = 0;
-        int result = instance.getEnemyRadius();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void EnemySpeedLessThanShotSpeed() {
+        System.out.println("EnemySpeedLessThanShotSpeed");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        boolean EnemySpeedIsLess = false;
+        if(enemy.getSpeed() < player.getShotSpeed()){
+            EnemySpeedIsLess = true;
+        }
+        assertEquals(EnemySpeedIsLess, true);
     }
     
 }
