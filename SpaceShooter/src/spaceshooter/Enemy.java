@@ -112,4 +112,8 @@ public class Enemy{
         return speed;
     }
     
+    public int getDelay(){
+        return delay;
+    }
+    
 }

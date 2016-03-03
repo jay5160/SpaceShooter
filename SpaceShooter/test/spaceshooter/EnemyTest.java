@@ -78,4 +78,28 @@ public class EnemyTest {
         assertEquals(EnemySpeedIsLess, true);
     }
     
+    @Test
+    public void EnemyDelayIsNotNegative() {
+        System.out.println("EnemyDelayIsNotNegative");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        boolean notNegative = true;
+        if(0 > enemy.getDelay()){
+            notNegative = false;
+        }
+        assertEquals(notNegative, true);
+    }
+    
+    @Test
+    public void EnemyRadiusIsLargerThanShotRadius() {
+        System.out.println("EnemyRadiusIsLargerThanShotRadius");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        boolean enemyIsLarger = false;
+        if(player.getShotRadius() < enemy.getEnemyRadius()){
+            enemyIsLarger = true;
+        }
+        assertEquals(enemyIsLarger, true);
+    }
+    
 }
