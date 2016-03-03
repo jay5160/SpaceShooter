@@ -11,12 +11,9 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javafx.scene.shape.Circle;
-import javax.imageio.ImageIO;
 
 /**
  *
@@ -36,9 +33,11 @@ public class Player {
     private ArrayList<Circle> balls;
     private ArrayList<Circle> playerShots;
     private ArrayList<Color> color;
+    private ArrayList<Color> enemyColor;
     private int shotSpeed = 5;
     private int shotDelay = 0;
     private int colorCounter = 0;
+    private String test = "";
     
     //private SpaceShooter spaceShooter;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -53,6 +52,7 @@ public class Player {
         balls = enemy.getBalls();
         playerShots = new ArrayList<>();
         color = new ArrayList<>();
+        enemyColor = new ArrayList<>();
     }
     
     void move(){
@@ -67,6 +67,9 @@ public class Player {
         y += speed;
         shotDelay--;
         
+        balls = enemy.getBalls();
+        enemyColor = enemy.getBallColor();
+        
         for(Circle c: playerShots){
             c.setCenterX(c.getCenterX()+shotSpeed);
         }
@@ -78,6 +81,22 @@ public class Player {
                 color.remove(i);
             }
         }
+        
+        //this.enemyAndShotCollision();
+        /*
+        for(int i = playerShots.size()-1; i >= 0; i--){
+            Circle c = playerShots.get(i);
+            
+            for(int j = balls.size()-1; j >= 0; j--){
+                
+                //Circle n = balls.get(j);
+                if(c.intersects(200, 200, 250, 250)){
+                    playerShots.remove(i);
+                    color.remove(i);
+                }
+            }
+        }
+        */
         
     }
     
@@ -94,6 +113,8 @@ public class Player {
                 colorCounter = 0;
                 g.setColor(Color.WHITE);
                 g.drawString("Player Shots: " + playerShots.size(), 100, 60);
+                g.drawString("Enemies from player: " + balls.size(), 100, 80);
+                g.drawString(test, 100, 100);
                 //g.drawLine(x, y+playerRadius/2, x+(int)screenSize.getWidth(), y+playerRadius/2);
                 
                 //Where you put the paint objects like these ^
@@ -174,5 +195,31 @@ public class Player {
         public int getShotSpeed(){
             return shotSpeed;
         }
+        
+        /*
+        public void enemyAndShotCollision(){
+            int ballsCounter = 0;
+            int playerShotsCounter = 0;
+            for(Circle c: balls){
+                ballsCounter++;
+                playerShotsCounter = 0;
+                for(Circle n: playerShots){
+                    playerShotsCounter++;
+                    if( (n.getCenterX()-n.getRadius()) > (c.getCenterX()-c.getRadius()) && 
+                            (n.getCenterX()+n.getRadius()) < (c.getCenterX()+c.getRadius()) &&
+                            (n.getCenterY()-n.getRadius()) > (c.getCenterY()-c.getRadius()) &&
+                            (n.getCenterY()+n.getRadius()) < (c.getCenterY()+c.getRadius())
+                    ){
+                        balls.remove(ballsCounter);
+                        //enemyColor.remove(ballsCounter);
+                        //enemy.setBalls(balls);
+                        //enemy.setEnemyColor(enemyColor);
+                        //playerShots.remove(playerShotsCounter);
+                        //color.remove(playerShotsCounter);
+                    }
+                }
+            }
+        }
+        */
         
 }

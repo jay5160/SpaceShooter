@@ -116,4 +116,12 @@ public class Enemy{
         return delay;
     }
     
+    public void setBalls(ArrayList<Circle> balls){
+        this.balls = balls;
+    }
+    
+    public void setEnemyColor(ArrayList<Color> color){
+        this.color = color;
+    }
+    
 }
