@@ -30,6 +30,7 @@ public class Player {
     private int speed = 5;
     private Color playerColor;
     private int playerRadius = 30;
+    private int shotRadius = playerRadius/2;
     private boolean isShooting = false;
     private Enemy enemy;
     private ArrayList<Circle> balls;
@@ -55,6 +56,13 @@ public class Player {
     
     void move(){
         //where the game logic goes
+        if(y < 0 - speed && speed < 0){
+            speed = 0;
+        }
+        if(y > screenSize.getHeight()/2 - playerRadius*2 + speed && speed > 0){
+            speed = 0;
+        }
+        
         y += speed;
         shotDelay--;
         
@@ -119,7 +127,7 @@ public class Player {
                     if(shotDelay < 0){
                         shotDelay = 5;
                         //color.add(getRandomColor());
-                        playerShots.add(new Circle(x, y+playerRadius/4, playerRadius/2));
+                        playerShots.add(new Circle(x, y+playerRadius/4, shotRadius));
                         color.add(playerColor);
                     }
                 }
@@ -156,6 +164,10 @@ public class Player {
         
         public int getPlayerRadius(){
             return playerRadius;
+        }
+        
+        public int getShotRadius(){
+            return shotRadius;
         }
         
 }

@@ -86,8 +86,8 @@ public class PlayerTest {
     }
     
     @Test
-    public void ShotListSizeAndColorListSize() {
-        System.out.println("ShotListSizeAndColorListSize");
+    public void shotListSizeAndColorListSize() {
+        System.out.println("shotListSizeAndColorListSize");
         Enemy enemy = new Enemy();
         Player player = new Player(enemy, 50, 50, 5);
         assertEquals(player.getPlayerShots().size(), player.getPlayerColorList().size());
@@ -103,6 +103,14 @@ public class PlayerTest {
             playerSmaller = true;
         }
         assertEquals(playerSmaller, true);
+    }
+    
+    @Test
+    public void shotRadiusHalfofPlayerRadius() {
+        System.out.println("shotRadiusHalfofPlayerRadius");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        assertEquals(player.getPlayerRadius()/2, player.getShotRadius());
     }
     
 }
