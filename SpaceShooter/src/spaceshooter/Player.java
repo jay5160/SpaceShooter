@@ -34,7 +34,9 @@ public class Player {
     private Enemy enemy;
     private ArrayList<Circle> balls;
     private ArrayList<Circle> playerShots;
+    private ArrayList<Color> color;
     private int shotDelay = 0;
+    private int colorCounter = 0;
     
     //private SpaceShooter spaceShooter;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -47,7 +49,8 @@ public class Player {
         this.playerColor = Color.red;
         this.enemy = enemy;
         balls = enemy.getBalls();
-        playerShots = new ArrayList<Circle>();
+        playerShots = new ArrayList<>();
+        color = new ArrayList<>();
     }
     
     void move(){
@@ -59,6 +62,14 @@ public class Player {
             c.setCenterX(c.getCenterX()+5);
         }
         
+        for(int i = playerShots.size()-1; i >= 0; i--){
+            Circle c = playerShots.get(i);
+            if(c.getCenterX() > screenSize.getWidth()/2+c.getRadius()){
+		playerShots.remove(i);
+                color.remove(i);
+            }
+        }
+        
     }
     
     public void paint(Graphics2D g) {
@@ -67,9 +78,11 @@ public class Player {
 		g.fillOval(x, y, playerRadius, playerRadius);
                 
                 for(Circle c: playerShots){
+                    g.setColor(color.get(colorCounter));
+                    colorCounter++;
                     g.drawOval((int)c.getCenterX(), (int)c.getCenterY(), (int)c.getRadius(), (int)c.getRadius());
                 }
-                
+                colorCounter = 0;
                 g.setColor(Color.WHITE);
                 g.drawString("Player Shots: " + playerShots.size(), 100, 60);
                 //g.drawLine(x, y+playerRadius/2, x+(int)screenSize.getWidth(), y+playerRadius/2);
@@ -107,6 +120,7 @@ public class Player {
                         shotDelay = 5;
                         //color.add(getRandomColor());
                         playerShots.add(new Circle(x, y+playerRadius/4, playerRadius/2));
+                        color.add(playerColor);
                     }
                 }
 	}
@@ -130,6 +144,18 @@ public class Player {
         
         public Color getPlayerColor(){
             return playerColor;
+        }
+        
+        public ArrayList<Circle> getPlayerShots(){
+            return playerShots;
+        }
+        
+        public ArrayList<Color> getPlayerColorList(){
+            return color;
+        }
+        
+        public int getPlayerRadius(){
+            return playerRadius;
         }
         
 }

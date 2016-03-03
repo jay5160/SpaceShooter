@@ -27,6 +27,7 @@ public class Enemy{
     private int speed = 3;
     private int colorCounter = 0;
     private int score = 0;
+    private int enemyRadius = 50;
     
     private ArrayList<Circle> balls;
     private ArrayList<Color> color;
@@ -36,8 +37,8 @@ public class Enemy{
     
     
     public Enemy(){
-        balls = new ArrayList<Circle>();
-        color = new ArrayList<Color>();
+        balls = new ArrayList<>();
+        color = new ArrayList<>();
         //balls.add(new Circle(10, 10, 10));
     }
     
@@ -46,7 +47,7 @@ public class Enemy{
         if(delay < 0){
             delay = 30;
             color.add(getRandomColor());
-            balls.add(new Circle(screenSize.getWidth()/2 + 100, randomGenerator.nextInt((int)screenSize.getHeight()/2), 50)); 
+            balls.add(new Circle(screenSize.getWidth()/2 + 100, randomGenerator.nextInt((int)screenSize.getHeight()/2), enemyRadius)); 
         }
         
         for(Circle c : balls){
@@ -102,4 +103,9 @@ public class Enemy{
         g.drawString("Score: " + score, 100, 40);
         colorCounter = 0;
     }
+    
+    public int getEnemyRadius(){
+        return enemyRadius;
+    }
+    
 }

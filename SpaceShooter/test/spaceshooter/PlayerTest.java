@@ -85,4 +85,24 @@ public class PlayerTest {
         assertEquals(player.getPlayerColor(), Color.red);
     }
     
+    @Test
+    public void ShotListSizeAndColorListSize() {
+        System.out.println("ShotListSizeAndColorListSize");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        assertEquals(player.getPlayerShots().size(), player.getPlayerColorList().size());
+    }
+    
+    @Test
+    public void playerSmallerThanEnemy() {
+        System.out.println("playerSmallerThanEnemy");
+        Enemy enemy = new Enemy();
+        Player player = new Player(enemy, 50, 50, 5);
+        boolean playerSmaller = false;
+        if(player.getPlayerRadius() < enemy.getEnemyRadius()){
+            playerSmaller = true;
+        }
+        assertEquals(playerSmaller, true);
+    }
+    
 }
