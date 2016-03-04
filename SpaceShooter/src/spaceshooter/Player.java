@@ -109,7 +109,7 @@ public class Player {
         
         for(Circle c: balls){
             c.setRadius(10);
-            if(c.intersects(x, y-20, 30, 30)){
+            if(c.intersects(x, y-20, 30, 30) && !gameOver){
                 gameOver = true;
                 finalScore = score;
             }
@@ -135,7 +135,7 @@ public class Player {
                 //g.drawString("Player Shots: " + playerShots.size(), 100, 60);
                 //g.drawString("Enemies from player: " + balls.size(), 100, 80);
                 g.drawString(test, 100, 100);
-                g.fillOval(x+14, y+14, 1, 1);
+                //g.fillOval(x+14, y+14, 1, 1);
                 
                 if(gameOver){
                     g.setColor(Color.WHITE);
@@ -183,6 +183,15 @@ public class Player {
                         playerShots.add(new Circle(x, y+playerRadius/4, shotRadius));
                         color.add(playerColor);
                     }
+                }
+                if (e.getKeyCode() == KeyEvent.VK_SPACE){
+                    gameOver = false;
+                    score = 0;
+                    finalScore = 0;
+                    enemy.getBalls().clear();
+                    enemy.getBallColor().clear();
+                    playerShots.clear();
+                    color.clear();
                 }
 	}
         
