@@ -83,20 +83,24 @@ public class Player {
         }
         
         //this.enemyAndShotCollision();
-        /*
+        
         for(int i = playerShots.size()-1; i >= 0; i--){
             Circle c = playerShots.get(i);
             
             for(int j = balls.size()-1; j >= 0; j--){
                 
-                //Circle n = balls.get(j);
-                if(c.intersects(200, 200, 250, 250)){
+                Circle n = balls.get(j);
+                if(c.intersects(n.getCenterX()-10, n.getCenterY()-10, 20, 20) && color.get(i) == enemyColor.get(j)){
                     playerShots.remove(i);
                     color.remove(i);
+                    balls.remove(j);
+                    enemyColor.remove(j);
+                    //enemy.setBalls(balls);
+                    //enemy.setEnemyColor(color);
                 }
             }
         }
-        */
+        
         
     }
     
