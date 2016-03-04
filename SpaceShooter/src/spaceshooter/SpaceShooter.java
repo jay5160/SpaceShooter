@@ -61,8 +61,9 @@ public class SpaceShooter extends javax.swing.JPanel{
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		player.paint(g2d);
+		
 		enemy.paint(g2d);
+                player.paint(g2d);
 	}
     
     public static void main(String[] args) {

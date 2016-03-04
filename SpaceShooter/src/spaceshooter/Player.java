@@ -38,6 +38,10 @@ public class Player {
     private int shotDelay = 0;
     private int colorCounter = 0;
     private String test = "";
+    private int score = 0;
+    private Circle smallCircle;
+    private boolean gameOver = false;
+    private int finalScore = 0;
     
     //private SpaceShooter spaceShooter;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -97,8 +101,19 @@ public class Player {
                     enemyColor.remove(j);
                     //enemy.setBalls(balls);
                     //enemy.setEnemyColor(color);
+                    score += 100;
+                    
                 }
             }
+        }
+        
+        for(Circle c: balls){
+            c.setRadius(10);
+            if(c.intersects(x, y-20, 30, 30)){
+                gameOver = true;
+                finalScore = score;
+            }
+            c.setRadius(enemy.getEnemyRadius());
         }
         
         
@@ -116,9 +131,20 @@ public class Player {
                 }
                 colorCounter = 0;
                 g.setColor(Color.WHITE);
-                g.drawString("Player Shots: " + playerShots.size(), 100, 60);
-                g.drawString("Enemies from player: " + balls.size(), 100, 80);
+                g.drawString("Score: " + score, 100, 20);
+                //g.drawString("Player Shots: " + playerShots.size(), 100, 60);
+                //g.drawString("Enemies from player: " + balls.size(), 100, 80);
                 g.drawString(test, 100, 100);
+                g.fillOval(x+14, y+14, 1, 1);
+                
+                if(gameOver){
+                    g.setColor(Color.WHITE);
+                    g.fillRect(0, 0, (int)screenSize.getWidth(), (int)screenSize.getHeight());
+                    g.setColor(Color.BLACK);
+                    g.drawString("Game Over", (int)screenSize.getWidth()/4-30, (int)screenSize.getHeight()/6);
+                    g.drawString("Score: " + finalScore, (int)screenSize.getWidth()/4-30, (int)screenSize.getHeight()/6 + 20);
+                    g.drawString("Press Space to Restart", (int)screenSize.getWidth()/4-60, (int)screenSize.getHeight()/6 + 60);
+                }
                 //g.drawLine(x, y+playerRadius/2, x+(int)screenSize.getWidth(), y+playerRadius/2);
                 
                 //Where you put the paint objects like these ^
@@ -149,6 +175,7 @@ public class Player {
                     changePlayerColor(playerColor);
                 }
                 if (e.getKeyCode() == KeyEvent.VK_W){
+                    test = "";
                     isShooting = true;
                     if(shotDelay < 0){
                         shotDelay = 5;
@@ -198,6 +225,14 @@ public class Player {
         
         public int getShotSpeed(){
             return shotSpeed;
+        }
+        
+        public int getScore(){
+            return score;
+        }
+        
+        public void setScore(int score){
+            this.score = score;
         }
         
         /*
