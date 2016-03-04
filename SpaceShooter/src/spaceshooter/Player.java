@@ -90,7 +90,7 @@ public class Player {
             for(int j = balls.size()-1; j >= 0; j--){
                 
                 Circle n = balls.get(j);
-                if(c.intersects(n.getCenterX()-10, n.getCenterY()-10, 20, 20) && color.get(i) == enemyColor.get(j)){
+                if(c.intersects(n.getCenterX()+10, n.getCenterY()-n.getRadius(), 10, n.getRadius()*2) && color.get(i) == enemyColor.get(j)){
                     playerShots.remove(i);
                     color.remove(i);
                     balls.remove(j);
