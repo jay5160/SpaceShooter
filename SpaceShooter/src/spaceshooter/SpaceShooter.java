@@ -76,13 +76,13 @@ public class SpaceShooter extends javax.swing.JPanel{
 	frame.setSize((int)screenSize.getWidth()/2, (int)screenSize.getHeight()/2);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+	 final int TimeDelay = 20; // refactored magic number to symbolic constant by Manav Mehrotra
 	while (true) {
 		game.move();
 		game.repaint();
                 
                 try {
-                    Thread.sleep(20);                 //1000 milliseconds is one second.
+                    Thread.sleep(TimeDelay);                 //1000 milliseconds is one second.
                 } catch(InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
