@@ -8,7 +8,6 @@ package spaceshooter;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-import java.awt.BorderLayout;
 
 public class myJPanel extends JPanel implements ActionListener {
 
