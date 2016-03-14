@@ -78,13 +78,7 @@ public class Player {
             c.setCenterX(c.getCenterX()+shotSpeed);
         }
         
-        for(int i = playerShots.size()-1; i >= 0; i--){
-            Circle c = playerShots.get(i);
-            if(c.getCenterX() > screenSize.getWidth()/2+c.getRadius()){
-		playerShots.remove(i);
-                color.remove(i);
-            }
-        }
+        removeOffScreenShots(); //Refactored messy code into a method by Jon Yahr
         
         //this.enemyAndShotCollision();
         
@@ -269,5 +263,15 @@ public class Player {
             }
         }
         */
+        
+        public void removeOffScreenShots(){ //Refactored code indentation by Jon Yahr
+            for(int i = playerShots.size()-1; i >= 0; i--){
+            Circle c = playerShots.get(i);
+                if(c.getCenterX() > screenSize.getWidth()/2+c.getRadius()){
+                    playerShots.remove(i);
+                    color.remove(i);
+                }
+            }
+        }
         
 }
