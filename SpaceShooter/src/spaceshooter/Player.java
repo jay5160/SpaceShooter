@@ -60,43 +60,15 @@ public class Player {
     }
     
     void move(){
-        //where the game logic goes
-        shotDelay--;
         
+        decreaseShotDelay(); //Refactored messy code into a method by Jon Yahr
         playerCollisionWithSides(); //Refactored messy code into a method by Jon Yahr
         playerMove(); //Refactored messy code into a method by Jon Yahr
         refreshEnemyState(); //Refactored messy code into a method by Jon Yahr
         moveAllPlayerShots(); //Refactored messy code into a method by Jon Yahr
         removeOffScreenShots(); //Refactored messy code into a method by Jon Yahr
-        
-        for(int i = playerShots.size()-1; i >= 0; i--){
-            Circle c = playerShots.get(i);
-            
-            for(int j = balls.size()-1; j >= 0; j--){
-                
-                Circle n = balls.get(j);
-                if(c.intersects(n.getCenterX()+10, n.getCenterY()-n.getRadius(), 10, n.getRadius()*2) && color.get(i) == enemyColor.get(j)){
-                    playerShots.remove(i);
-                    color.remove(i);
-                    balls.remove(j);
-                    enemyColor.remove(j);
-                    //enemy.setBalls(balls);
-                    //enemy.setEnemyColor(color);
-                    score += 100;
-                    
-                }
-            }
-        }
-        
-        for(Circle c: balls){
-            c.setRadius(10);
-            if(c.intersects(x, y-20, 30, 30) && !gameOver){
-                gameOver = true;
-                finalScore = score;
-            }
-            c.setRadius(enemy.getEnemyRadius());
-        }
-        
+        collisionWithEnemiesAndShots(); //Refactored messy code into a method by Jon Yahr
+        collisionWithEnemiesAndPlayer(); //Refactored messy code into a method by Jon Yahr
         
     }
     
@@ -257,6 +229,41 @@ public class Player {
             for(Circle c: playerShots){
                 c.setCenterX(c.getCenterX()+shotSpeed);
             }
+        }
+        
+        public void collisionWithEnemiesAndShots(){//Refactored code by Jon Yahr
+            for(int i = playerShots.size()-1; i >= 0; i--){
+                Circle c = playerShots.get(i);
+            
+                for(int j = balls.size()-1; j >= 0; j--){
+                
+                    Circle n = balls.get(j);
+                    if(c.intersects(n.getCenterX()+10, n.getCenterY()-n.getRadius(), 10, n.getRadius()*2) && color.get(i) == enemyColor.get(j)){
+                        playerShots.remove(i);
+                        color.remove(i);
+                        balls.remove(j);
+                        enemyColor.remove(j);
+                        //enemy.setBalls(balls);
+                        //enemy.setEnemyColor(color);
+                        score += 100;
+                    }
+                }
+            }
+        }
+        
+        public void collisionWithEnemiesAndPlayer(){//Refactored code by Jon Yahr
+            for(Circle c: balls){
+                c.setRadius(10);
+                if(c.intersects(x, y-20, 30, 30) && !gameOver){
+                    gameOver = true;
+                    finalScore = score;
+                }
+                c.setRadius(enemy.getEnemyRadius());
+            }
+        }
+        
+        public void decreaseShotDelay(){//Refactored code by Jon Yahr
+            shotDelay--;
         }
         
 }
