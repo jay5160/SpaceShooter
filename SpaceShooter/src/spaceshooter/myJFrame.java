@@ -9,19 +9,37 @@ package spaceshooter;
  *
  * @author qnh29
  */
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 public class myJFrame extends JFrame {
+    
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    SpaceShooter game = new SpaceShooter();
+    final int TimeDelay = 20;
+    
     myJFrame()
     {
-        super("Space Shooter");
-        myJPanel mjp = new myJPanel() {};
-         getContentPane().add(mjp,"Center");
+        // Instantiated the game here - Aaron McFarland
+        this.add(game);
+        game.setBackground(Color.black);
+        
+        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize (600, 600);
+        setSize((int)screenSize.getWidth()/2, (int)screenSize.getHeight()/2);
         setVisible(true);
         
-        
-    
-}
+        	while (true) {
+		game.move();
+		game.repaint();
+                
+                try {
+                    Thread.sleep(TimeDelay);
+                } catch(InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
     
 }

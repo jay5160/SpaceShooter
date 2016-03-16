@@ -50,7 +50,7 @@ public class SpaceShooter extends javax.swing.JPanel{
 		setFocusable(true);
 	}
     
-    private void move() {
+    public void move() {
 		player.move();
 		enemy.move();
 	}
@@ -65,27 +65,10 @@ public class SpaceShooter extends javax.swing.JPanel{
                 player.paint(g2d);
 	}
     
-    public static void main(String[] args) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public static void main(String[] args) {      
         
-        JFrame frame = new JFrame("Space Shooter");
-	SpaceShooter game = new SpaceShooter();
-        game.setBackground(Color.black);
-        frame.add(game);
-	frame.setSize((int)screenSize.getWidth()/2, (int)screenSize.getHeight()/2);
-	frame.setVisible(true);
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	final int TimeDelay = 20; // refactored magic number to symbolic constant by Manav Mehrotra
-	while (true) {
-		game.move();
-		game.repaint();
-                
-                try {
-                    Thread.sleep(TimeDelay);
-                } catch(InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-        }
-    
+        // Made the main method smaller by instaniating the game in the "myJFrame" class - Aaron McFarland
+        myJFrame frame = new myJFrame();
+        
+    }
 }
