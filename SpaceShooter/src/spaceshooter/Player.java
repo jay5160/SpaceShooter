@@ -93,6 +93,7 @@ public class Player {
             if(c.intersects(x, y-20, 30, 30) && !gameOver){
                 gameOver = true;
                 finalScore = score;
+                
             }
             c.setRadius(enemy.getEnemyRadius());
         }
@@ -117,7 +118,7 @@ public class Player {
                 //g.drawString("Enemies from player: " + balls.size(), 100, 80);
                 g.drawString(test, 100, 100);
                 //g.fillOval(x+14, y+14, 1, 1);
-                
+            
                 if(gameOver){
                     g.setColor(Color.WHITE);
                     g.fillRect(0, 0, (int)screenSize.getWidth(), (int)screenSize.getHeight());
@@ -141,6 +142,16 @@ public class Player {
         if (e.getKeyCode() == KeyEvent.VK_W){
             isShooting = false;
         }
+    }
+    public void initialize() // extracted method refactoring by manav mehrotra
+    {
+                    gameOver = false;
+                    score = 0;
+                    finalScore = 0;
+                    enemy.getBalls().clear();
+                    enemy.getBallColor().clear();
+                    playerShots.clear();
+                    color.clear();
     }
 
 	public void keyPressed(KeyEvent e) {
@@ -166,13 +177,7 @@ public class Player {
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_SPACE){
-                    gameOver = false;
-                    score = 0;
-                    finalScore = 0;
-                    enemy.getBalls().clear();
-                    enemy.getBallColor().clear();
-                    playerShots.clear();
-                    color.clear();
+                    initialize();
                 }
 	}
         
@@ -257,6 +262,5 @@ public class Player {
             for(Circle c: playerShots){
                 c.setCenterX(c.getCenterX()+shotSpeed);
             }
-        }
-        
+        }  
 }
