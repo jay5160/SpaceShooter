@@ -70,6 +70,34 @@ public class Player {
         collisionWithEnemiesAndShots(); //Refactored messy code into a method by Jon Yahr
         collisionWithEnemiesAndPlayer(); //Refactored messy code into a method by Jon Yahr
         
+        for(int i = playerShots.size()-1; i >= 0; i--){
+            Circle c = playerShots.get(i);
+            
+            for(int j = balls.size()-1; j >= 0; j--){
+                
+                Circle n = balls.get(j);
+                if(c.intersects(n.getCenterX()+10, n.getCenterY()-n.getRadius(), 10, n.getRadius()*2) && color.get(i) == enemyColor.get(j)){
+                    playerShots.remove(i);
+                    color.remove(i);
+                    balls.remove(j);
+                    enemyColor.remove(j);
+                    //enemy.setBalls(balls);
+                    //enemy.setEnemyColor(color);
+                    score += 100;
+                    
+                }
+            }
+        }
+        
+        for(Circle c: balls){
+            c.setRadius(10);
+            if(c.intersects(x, y-20, 30, 30) && !gameOver){
+                gameOver = true;
+                finalScore = score;
+                
+            }
+            c.setRadius(enemy.getEnemyRadius());
+        }
     }
     
     public void paint(Graphics2D g) {
@@ -89,7 +117,7 @@ public class Player {
                 //g.drawString("Enemies from player: " + balls.size(), 100, 80);
                 g.drawString(test, 100, 100);
                 //g.fillOval(x+14, y+14, 1, 1);
-                
+            
                 if(gameOver){
                     g.setColor(Color.WHITE);
                     g.fillRect(0, 0, (int)screenSize.getWidth(), (int)screenSize.getHeight());
@@ -113,6 +141,16 @@ public class Player {
         if (e.getKeyCode() == KeyEvent.VK_W){
             isShooting = false;
         }
+    }
+    public void initialize() // extracted method refactoring by manav mehrotra
+    {
+                    gameOver = false;
+                    score = 0;
+                    finalScore = 0;
+                    enemy.getBalls().clear();
+                    enemy.getBallColor().clear();
+                    playerShots.clear();
+                    color.clear();
     }
 
 	public void keyPressed(KeyEvent e) {
@@ -138,13 +176,7 @@ public class Player {
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_SPACE){
-                    gameOver = false;
-                    score = 0;
-                    finalScore = 0;
-                    enemy.getBalls().clear();
-                    enemy.getBallColor().clear();
-                    playerShots.clear();
-                    color.clear();
+                    initialize();
                 }
 	}
         
@@ -229,6 +261,7 @@ public class Player {
             for(Circle c: playerShots){
                 c.setCenterX(c.getCenterX()+shotSpeed);
             }
+<<<<<<< HEAD
         }
         
         public void collisionWithEnemiesAndShots(){//Refactored code by Jon Yahr
@@ -265,5 +298,4 @@ public class Player {
         public void decreaseShotDelay(){//Refactored code by Jon Yahr
             shotDelay--;
         }
-        
 }

@@ -39,7 +39,6 @@ public class Enemy{
     public Enemy(){
         balls = new ArrayList<>();
         color = new ArrayList<>();
-        //balls.add(new Circle(10, 10, 10));
     }
     
     void move(){
@@ -99,8 +98,6 @@ public class Enemy{
             g.fillOval((int)c.getCenterX(), (int)c.getCenterY(), 50, 50);
         }
         g.setColor(Color.WHITE);
-        //g.drawString("Balls on Screen: " + balls.size(), 100, 20);
-        //g.drawString("Score: " + score, 100, 40);
         colorCounter = 0;
     }
     

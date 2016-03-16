@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package spaceshooter;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-import javafx.scene.shape.Circle;
+import java.awt.Color; 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,10 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Jon
- */
 public class EnemyTest {
     
     public EnemyTest() {
@@ -42,9 +30,7 @@ public class EnemyTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of move method, of class Enemy.
-     */
+  
     @Test
     public void BallListSizeAndColorListSize() {
         System.out.println("BallListSizeAndColorListSize");
