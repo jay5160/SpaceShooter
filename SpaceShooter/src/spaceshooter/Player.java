@@ -201,7 +201,7 @@ public class Player {
             this.score = score;
         }
         
-        public void removeOffScreenShots(){ //Refactored code by Jon Yahr
+        private void removeOffScreenShots(){ //Refactored code by Jon Yahr
             for(int i = playerShots.size()-1; i >= 0; i--){
             Circle c = playerShots.get(i);
                 if(c.getCenterX() > screenSize.getWidth()/2+c.getRadius()){
@@ -211,7 +211,7 @@ public class Player {
             }
         }
         
-        public void playerCollisionWithSides(){//Refactored code by Jon Yahr
+        private void playerCollisionWithSides(){//Refactored code by Jon Yahr
             if(y < 0 - speed && speed < 0){
                 speed = 0;
             }
@@ -220,22 +220,22 @@ public class Player {
             }
         }
         
-        public void playerMove(){//Refactored code by Jon Yahr
+        private void playerMove(){//Refactored code by Jon Yahr
             y += speed;
         }
         
-        public void refreshEnemyState(){//Refactored code by Jon Yahr
+        private void refreshEnemyState(){//Refactored code by Jon Yahr
             balls = enemy.getBalls();
             enemyColor = enemy.getBallColor();
         }
         
-        public void moveAllPlayerShots(){//Refactored code by Jon Yahr
+        private void moveAllPlayerShots(){//Refactored code by Jon Yahr
             for(Circle c: playerShots){
                 c.setCenterX(c.getCenterX()+shotSpeed);
             }
         }
         
-        public void collisionWithEnemiesAndShots(){//Refactored code by Jon Yahr
+        private void collisionWithEnemiesAndShots(){//Refactored code by Jon Yahr
             for(int i = playerShots.size()-1; i >= 0; i--){
                 Circle c = playerShots.get(i);
             
@@ -255,7 +255,7 @@ public class Player {
             }
         }
         
-        public void collisionWithEnemiesAndPlayer(){//Refactored code by Jon Yahr
+        private void collisionWithEnemiesAndPlayer(){//Refactored code by Jon Yahr
             for(Circle c: balls){
                 c.setRadius(10);
                 if(c.intersects(x, y-20, 30, 30) && !gameOver){
@@ -266,7 +266,7 @@ public class Player {
             }
         }
         
-        public void decreaseShotDelay(){//Refactored code by Jon Yahr
+        private void decreaseShotDelay(){//Refactored code by Jon Yahr
             shotDelay--;
         }
 }
