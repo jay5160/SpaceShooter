@@ -41,7 +41,8 @@ public class Enemy{
         color = new ArrayList<>();
     }
     
-    void move(){
+    void move()
+    {
         delay--;
         if(delay < 0){
             delay = 30;
@@ -53,6 +54,11 @@ public class Enemy{
             c.setCenterX(c.getCenterX()-speed);
 	}
         
+        scoring();
+    }
+    
+    public void scoring() // extracted method refactoring by manav mehrotra 
+    {
         for(int i = balls.size()-1; i >= 0; i--){
             Circle c = balls.get(i);
             if(c.getCenterX() < -c.getRadius()){
@@ -60,7 +66,7 @@ public class Enemy{
                 color.remove(i);
 		score++;
             }
-        }  
+        } 
     }
     
     public Color getRandomColor(){
